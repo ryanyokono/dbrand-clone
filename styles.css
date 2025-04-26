@@ -20,6 +20,52 @@ body, html {
     margin: auto;
   }
   
+  .nav-item {
+    position: relative;
+  }
+  
+  .dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: #000;
+    padding: 2rem;
+    min-width: 300px;
+    display: flex;
+    gap: 2rem;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+    transition: all 0.3s ease;
+    z-index: 99;
+  }
+  
+  .dropdown-column {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .dropdown-column h4 {
+    color: #fff;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+  }
+  
+  .dropdown-column a {
+    color: #aaa;
+    text-decoration: none;
+    margin: 0.25rem 0;
+    font-size: 0.85rem;
+  }
+  
+  .nav-item:hover .dropdown {
+    display: flex;
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
   .logo {
     font-size: 1.5rem;
     font-weight: bold;
@@ -58,7 +104,7 @@ body, html {
 
 .hero-section {
     background: #fff;
-    padding: 4rem 0;
+    padding: 0;
   }
   
   .hero-content {
@@ -87,6 +133,7 @@ body, html {
   .hero-text h1 {
     font-size: 3rem;
     color: #000;
+    margin-top: 0;
     margin-bottom: 1rem;
   }
   
