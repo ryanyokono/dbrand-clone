@@ -6,7 +6,7 @@ body, html {
   .navbar {
     background-color: #000;
     color: white;
-    padding: 1rem 2rem;
+    padding: 1.25rem 2rem; /* slightly thicker */
     position: sticky;
     top: 0;
     z-index: 100;
@@ -16,60 +16,8 @@ body, html {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    max-width: 1400px;
-    margin: auto;
-  }
-  
-  .nav-item {
-    position: relative;
-  }
-  
-  .dropdown {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    background: #000;
-    padding: 2rem;
-    min-width: 300px;
-    display: flex;
-    gap: 2rem;
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(20px);
-    transition: all 0.3s ease;
-    z-index: 99;
-  }
-  
-  .dropdown-column {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .dropdown-column h4 {
-    color: #fff;
-    margin-bottom: 0.5rem;
-    font-size: 0.9rem;
-  }
-  
-  .dropdown-column a {
-    color: #aaa;
-    text-decoration: none;
-    margin: 0.25rem 0;
-    font-size: 0.85rem;
-  }
-  
-  .nav-item:hover .dropdown {
-    display: flex;
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
-  }
-
-  .logo {
-    font-size: 1.5rem;
-    font-weight: bold;
-    font-family: monospace;
+    max-width: 100%;
+    margin: 0 auto;
   }
   
   .nav-links {
@@ -77,6 +25,7 @@ body, html {
     gap: 2rem;
     flex: 1;
     justify-content: center;
+    position: relative;
   }
   
   .nav-links a {
@@ -84,15 +33,28 @@ body, html {
     text-decoration: none;
     font-weight: 500;
     position: relative;
+    padding: 0.5rem 0;
   }
   
-  .nav-links a:hover {
-    color: #fbc500;
+  .nav-links a::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0%;
+    height: 3px;
+    background-color: #fbc500;
+    transition: width 0.3s ease;
+  }
+  
+  .nav-links a:hover::after,
+  .nav-links a.active::after {
+    width: 100%;
   }
   
   .nav-icons {
     display: flex;
-    gap: 1rem;
+    gap: 1.5rem;
   }
   
   .icon {
@@ -101,6 +63,70 @@ body, html {
     color: white;
   }
   
+  .nav-item:hover .dropdown,
+.nav-item:focus-within .dropdown {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+  
+  .dropdown {
+    display: flex; /* always flex */
+    position: fixed;
+    top: 80px; /* height of your navbar */
+    left: 0;
+    width: 100vw;
+    background: #000;
+    padding: 2rem 5vw;
+    gap: 4rem;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translateY(20px);
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+    z-index: 99;
+    flex-wrap: wrap;
+  }
+  
+  .dropdown-column {
+    display: flex;
+    flex-direction: column;
+    min-width: 150px;
+  }
+  
+  .dropdown-column h4 {
+    color: #fff;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+  }
+  
+  .dropdown-column a {
+    color: #aaa;
+    text-decoration: none;
+    margin-bottom: 0.5rem;
+    font-size: 0.85rem;
+  }
+  
+  .shop-all-button {
+    background: #fbc500;
+    color: #000;
+    font-weight: bold;
+    text-decoration: none;
+    padding: 1rem 2rem;
+    border-radius: 6px;
+    align-self: center;
+    margin-left: auto;
+    margin-top: 2rem;
+  }
+  
+  .nav-item:hover .dropdown {
+    display: flex;
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
 
 .hero-section {
     background: #fff;
